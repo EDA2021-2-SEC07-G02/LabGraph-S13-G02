@@ -30,6 +30,7 @@ import config
 import threading
 from App import controller
 from DISClib.ADT import stack
+from time import process_time
 assert config
 
 """
@@ -44,7 +45,7 @@ operación seleccionada.
 # ___________________________________________________
 
 
-servicefile = 'bus_routes_14000.csv'
+servicefile = 'bus_routes_'
 initialStation = None
 
 # ___________________________________________________
@@ -68,8 +69,11 @@ def printMenu():
 
 
 def optionTwo(cont):
+    muestra=input("\nLAB 9\nIngrese el tamaño de muestra (50,150,300,1000...):  ")
+    file=servicefile+muestra+".csv"
+    print("***Pruebas con archivo: "+file+"***")
     print("\nCargando información de transporte de singapur ....")
-    controller.loadServices(cont, servicefile)
+    controller.loadServices(cont, file)
     numedges = controller.totalConnections(cont)
     numvertex = controller.totalStops(cont)
     print('Numero de vertices: ' + str(numvertex))
@@ -118,6 +122,7 @@ Menu principal
 
 def thread_cycle():
     while True:
+        tiempoInicial=process_time()
         printMenu()
         inputs = input('Seleccione una opción para continuar\n>')
 
@@ -150,6 +155,8 @@ def thread_cycle():
 
         else:
             sys.exit(0)
+        input("\nDuración: "+str((process_time()-tiempoInicial)*1000)+"ms\nPresione enter para continuar...")
+        print("")
     sys.exit(0)
 
 
