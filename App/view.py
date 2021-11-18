@@ -122,9 +122,10 @@ Menu principal
 
 def thread_cycle():
     while True:
-        tiempoInicial=process_time()
+        
         printMenu()
         inputs = input('Seleccione una opción para continuar\n>')
+        tiempoInicial=process_time()
 
         if int(inputs[0]) == 1:
             print("\nInicializando....")
@@ -138,8 +139,8 @@ def thread_cycle():
             optionThree(cont)
 
         elif int(inputs[0]) == 4:
-            msg = "Estación Base: BusStopCode-ServiceNo (Ej: 75009-10): "
-            initialStation = input(msg)
+            msg = "75009-10"#"Estación Base: BusStopCode-ServiceNo (Ej: 75009-10): "
+            initialStation = "75009-10" #input(msg)
             optionFour(cont, initialStation)
 
         elif int(inputs[0]) == 5:
